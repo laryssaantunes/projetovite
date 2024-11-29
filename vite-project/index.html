@@ -3,11 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/db.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Vite App</title> 
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
+  <body class="fullscreen">
+    <div class="container">
+      <h1 class="title">Minha primeira PWA</h1>
+      
+      <div style="text-align: center;">
+        <img src="/images/pwa-icon-256.png" alt="pwa" width="256" height="256">
+      </div>
+
+      <div style="text-align: center;">
+        <input type="text" id="inputNome" placeholder="Nome">
+        <input type="number" id="inputIdade" placeholder="Idade">
+        
+        <button id="btnSalvar">Salvar</button>
+        <button id="btnListar">Listar</button>
+        <button id="btnAtualizar">Atualizar</button>
+        <button id="btnRemover">Remover</button>
+
+        <input type="text" id="inputBuscar" placeholder="Buscar por nome">
+        <button id="btnBuscar">Buscar</button>
+      </div>
+
+      <div>
+        <output></output>
+      </div>
+    </div>
   </body>
 </html>
