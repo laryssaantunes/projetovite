@@ -1,6 +1,6 @@
 {
-    "name": "Minha primeira Progressive Web App",
-    "short_name": "Primeira PWA",
+    "name": "Geolocation Progressive Web App",
+    "short_name": "geoloc-pwa",
     "icons": [
         {
             "src": "images/pwa-icon-256.png",

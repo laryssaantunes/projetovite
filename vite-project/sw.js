@@ -1,11 +1,12 @@
-import { offlineFallback ,warmStrategyCache } from 'workbox-recipes';
+import { warmStrategyCache } from 'workbox-recipes';
 import { CacheFirst, StaleWhileRevalidade } from 'workbox-srategies';
 import { registerRoute, Route} from 'workbox-routing';
 import {CacheableResponsePlugin} from 'workbox-cacheable-response';
 import {ExpirationPlugin} from 'workbox-expiration';
 
+// configurando o cache
 const pageCache = new CacheFirst({
-  cacheName: 'primeira-pwa=cache',
+  cacheName: 'pwa-geloc-cache',
   plugins: [
     new CacheableResponsePlugin({
       statuses: [0, 200],
@@ -16,13 +17,16 @@ const pageCache = new CacheFirst({
   ],
 });
 
+//indicando o cache de página
 warmStrategyCache({
   urls: ['/index.htlm', '/'],
   strategy: pageCache,
 });
+
+//registrando a rota
 registerRoute(({ Request }) => requestAnimationFrame.mode === 'navigate' , pageCache);
 
-registerRoute(
+registerRoute(//configurando cache de assets
   ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
   new StaleWhileRevalidade({
     cacheName: 'asset-cache',
@@ -34,7 +38,7 @@ registerRoute(
   }),
 );
 
-offlineFallback({
+offlineFallback({//configurando offline fallback
   pageFallback: '/offline.html',
 });
 
@@ -48,5 +52,4 @@ const imageRoute = new Route(({ request }) => {
     })
   ]
 }));
-
 registerRoute(imageRoute);
